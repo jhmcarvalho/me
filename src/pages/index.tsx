@@ -17,8 +17,8 @@ function Home() {
     <div className="flex flex-col m-5 font-nunito">
       <NavBar setSection={setSection} />
       <div
-        className="grid grid-cols-3 gap-2 md:grid-cols-4 
-			md:gap-4 mt-5 container mx-auto xl:px-20"
+        className="grid grid-cols-3 gap-2 md:grid-cols-3 
+			md:gap-3 mt-5 container mx-auto xl:px-20"
       >
         <IntroCard section={section} />
         <ToggleCard section={section} />
@@ -31,11 +31,6 @@ function Home() {
         <MailCard section={section} />
         <TimeCard section={section} />
       </div>
-      <div className="flex justify-center items-center mt-10">
-        <a href="https://anahoward.me/2004.html">
-          <img src="https://cyber.dabamos.de/88x31/entranceorexit.gif" />
-        </a>
-        </div>
     </div>
   );
 }

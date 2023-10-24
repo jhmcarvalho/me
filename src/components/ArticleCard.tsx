@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowCircleUpIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
 import gitDark from "@images/git_dark.png";
-import gitLight from "@images/git_light.png"; // Importe a imagem de tema light
+import gitLight from "@images/git_light.png";
 import { useTheme } from 'next-themes';
 
 const ArticleCard = ({ section }) => {
@@ -27,7 +27,7 @@ const ArticleCard = ({ section }) => {
           },
         },
       }}
-      className="relative flex rounded-3xl dark:bg-gray-900 bg-white col-span-2 aspect-2/1"
+      className="flex bg-white relative dark:bg-gray-900 rounded-3xl md:col-span-1 col-span-2 overflow-hidden"
     >
       <div className="rounded-3xl">
         <Image src={imageSrc} layout='fill' alt='' className="rounded-3xl" />
