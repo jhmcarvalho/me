@@ -21,7 +21,7 @@ function DayComponent() {
           <div className="rounded-full bg-white w-2 h-2 md:w-5 md:h-5"></div>
           <div className="flex flex-col">
             <div className="text-white font-bold text-sm md:text-2xl xl:text-4xl">{time}</div>
-            <div className="text-white font-thin -mt-2 text-sm md:text-lg xl:text-2xl">in the uk</div>
+            <div className="text-white font-thin -mt-2 text-sm md:text-lg xl:text-2xl">in Brazil</div>
           </div>
         </div>
       </div>
