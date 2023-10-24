@@ -4,7 +4,7 @@ import { useState,useEffect, useRef } from "react";
 function DayComponent() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [time, setTime] = useState("");
-  const formatter = new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/London',hour12:true,hour:'numeric',minute:'numeric'})
+  const formatter = new Intl.DateTimeFormat('en-GB', { timeZone: 'America/Sao_Paulo', hour12: false, hour: 'numeric', minute: 'numeric' });
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(

@@ -1,6 +1,5 @@
 import NavBar from "@/components/NavBar";
 import IntroCard from "@/components/IntroCard";
-import TwitterCard from "@/components/TwitterCard";
 import ToggleCard from "@/components/ToggleCard";
 import MeowyCard from "@/components/MeowyCard";
 import ArticleCard from "@/components/ArticleCard";
@@ -22,7 +21,6 @@ function Home() {
 			md:gap-4 mt-5 container mx-auto xl:px-20"
       >
         <IntroCard section={section} />
-        <TwitterCard section={section} />
         <ToggleCard section={section} />
         <DiscordCard section={section} />
         <SpotifyCard section={section} />

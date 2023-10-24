@@ -13,12 +13,12 @@ const MapCard = ({ section }) => {
     `/api/map${resolvedTheme == "dark" ? "?dark" : ""}`,
     (url) => axios.get(url).then((res) => res.data)
   );
+  const adress = "Toledo, Paraná"
   const mapUrl = useMemo(
     () =>
-      `http://maps.apple.com/?address=${encodeURIComponent(
-        data?.location?.replace(", ", " ")
-      )}&z=15`,
-    [data?.location]
+      `http://maps.apple.com/?address=${encodeURIComponent(adress
+        )}&z=15`,
+    [adress]
   );
 
   return (
@@ -42,6 +42,7 @@ const MapCard = ({ section }) => {
       <div className="flex justify-center items-center md:scale-150 2xl:scale-200 ">
         {data && (
           <Image
+            alt=""
             className="saturate-150"
             src={data.url}
             placeholder="blur"

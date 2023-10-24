@@ -26,7 +26,7 @@ export default function Toggle() {
   }, [resolvedTheme, setTheme]);
 
   useEffect(() => {
-    setTheme("light");
+    setTheme("dark");
   }, [setTheme]);
 
   return (
@@ -37,7 +37,7 @@ export default function Toggle() {
       onKeyDown={(e: KeyDownEventType) => e.preventDefault()}
       onKeyUp={(e: KeyDownEventType) => e.preventDefault()}
       className={classNames(
-        enabled ? "bg-gray-800" : "bg-gray-200",
+        enabled ? "bg-gray-200" : "bg-gray-800",
         "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
       )}
     >
@@ -48,7 +48,7 @@ export default function Toggle() {
             transition={spring}
             aria-hidden="true"
             className={classNames(
-              enabled ? "translate-x-5" : "translate-x-0",
+              enabled ? "translate-x-0" : "translate-x-5",
               "relative pointer-events-none inline-block h-5 w-5 rounded-full bg-white dark:bg-gray-900 first-letter:shadow ring-0 transition duration-300 focus:outline-none"
             )}
           >
@@ -56,8 +56,7 @@ export default function Toggle() {
               <motion.div
                 animate={
                   enabled
-                    ? { scale: 0.1, rotate: 360, opacity: 0 }
-                    : { scale: 1, rotate: 0, opacity: 1 }
+                    ? { scale: 1, rotate: 0, opacity: 1 } : { scale: 0.1, rotate: 360, opacity: 0 }    
                 }
                 transition={{ duration: 0.4, ease: "easeInOut" }}
               >
@@ -66,8 +65,7 @@ export default function Toggle() {
               <motion.div
                 animate={
                   enabled
-                    ? { scale: 1, rotate: 360, opacity: 1 }
-                    : { scale: 0.1, rotate: 0, opacity: 0 }
+                    ? { scale: 0.1, rotate: 0, opacity: 0 } : { scale: 1, rotate: 360, opacity: 1 }
                 }
                 transition={{ duration: 0.4, ease: "easeInOut" }}
               >
