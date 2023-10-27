@@ -3,6 +3,7 @@ const nextConfig = {
 	reactStrictMode: true,
 	images: {
 		domains: ['snapshot.apple-mapkit.com'],
+		domains: ['img.icons8.com'],
 	},
 }
 

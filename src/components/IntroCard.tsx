@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Transparentpfp from "@images/transparentpfp.png";
+import Transparentpfp from "@images/dino.png";
+import Links from "./Social";
+
 const IntroCard = ({ section }) => {
   return (
     <motion.div
@@ -38,7 +40,7 @@ const IntroCard = ({ section }) => {
             style={{ rotate: 180, zIndex: 20 }}
             className="2xl:hidden absolute -top-32 2xl:-top-52 right-10 rotate-180 -mt-10 w-32 2xl:w-60"
           >
-            <Image className="dark:brightness-90" src={Transparentpfp} />{" "}
+            <Image className="dark:brightness-90" src={Transparentpfp} alt=""/>{" "}
           </motion.div>
           <div className="text-3xl md:text-4xls 2xl:text-4xl 2xl:mt-16 m-6 md:ml-6 ml-5 md:m-8 font-nunito font-bold">
             Hi, I&apos;m Jeff!
@@ -47,18 +49,21 @@ const IntroCard = ({ section }) => {
         <div className="flex flex-col ml-5 justify-center 2xl:mt-10 sm:-mt-6 sm:ml-8 md:ml-6">
           <div className="lg:text-xl xl:text-2xl 2xl:mr-20 font-nunito dark:text-gray-300">
             {" "}
-            I&apos;m a 19 year-old developement student. I currently work with software
+            I&apos;m a 25 year-old developement student. I currently work with software
             analysis and testing.
-            <a
+            <a title="Instagram"
               className="ml-1 underline-offset-2 underline focus:outline-none"
               href="https://lis.ac.uk"
-              rel="noreferrer"
+              rel="noreferrer noopener"
               target="_blank"
             >
             </a>
           </div>
           <div className="flex lg:text-xl xl:text-2xl 2xl:text-2xl font-base dark:text-gray-300 mt-5">
           From Brazil!
+          </div>
+          <div className="relative flex w-full flex-row items-center justify-center gap-2 pt-2">
+            <Links/>
           </div>
         </div>
       </div>

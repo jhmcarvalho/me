@@ -13,7 +13,6 @@ export default function Document() {
 				<meta property="og:url" content="https://www.anahoward.me"></meta>
 				<meta property="og:title" content="Jeff" />
 				<meta property="og:description" content="" />
-				<meta property="og:image" content="https://anahoward.me/images/preview.png"></meta>
 
 				{/* <!-- Google tag (gtag.js) --> */}
 				<Script

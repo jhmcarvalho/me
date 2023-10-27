@@ -5,7 +5,7 @@ import gitDark from "@images/git_dark.png";
 import gitLight from "@images/git_light.png";
 import { useTheme } from 'next-themes';
 
-const ArticleCard = ({ section }) => {
+const GitHub = ({ section }) => {
   const { resolvedTheme } = useTheme();
 
   // Determine a imagem com base no tema
@@ -40,4 +40,4 @@ const ArticleCard = ({ section }) => {
   );
 };
 
-export default ArticleCard;
+export default GitHub;

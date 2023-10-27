@@ -2,35 +2,57 @@ import axios from "axios";
 import { useMemo } from "react";
 import useSWR from "swr";
 import { motion } from "framer-motion";
-import { isAfter, add } from "date-fns";
+import { isBefore, isAfter, parse, format, sub, isValid } from "date-fns";
 
 import NightComponent from "./time-components/NightComponent";
 import DayComponent from "./time-components/DayComponent";
 
+const latitude = -24.721932;
+const longitude = -53.744984;
+
 const TimeCard = ({ section }) => {
-  const { data, isLoading } = useSWR(`/api/time`, (url) =>
+  const apiUrl = `https://api.sunrise-sunset.org/json?lat=-24.721932&lng=-53.744984`;
+
+  const { data, isLoading } = useSWR(apiUrl, (url) =>
     axios.get(url).then((res) => res.data)
   );
 
   const [sunriseTime, sunsetTime] = useMemo(() => {
     if (!data) return [null, null];
 
-    return [new Date(data.results.sunrise), new Date(data.results.sunset)];
+    // Parse the sunrise and sunset times
+    const sunrise = parse(data.results.sunrise, "h:mm:ss a", new Date());
+    const sunset = parse(data.results.sunset, "h:mm:ss a", new Date());
+
+    if (!isValid(sunrise) || !isValid(sunset)) {
+      return [null, null];
+    }
+
+    // Subtract 3 hours to adjust for your region
+    const adjustedSunriseTime = sub(sunrise, { hours: 3 });
+    const adjustedSunsetTime = sub(sunset, { hours: 3 });
+
+    return [adjustedSunriseTime, adjustedSunsetTime];
   }, [data]);
 
   const timeComponent = useMemo(() => {
     if (!data) return null;
 
-    if (isAfter(new Date(), add(sunsetTime, { hours: 1 }))) {
-      return <NightComponent />;
-    }
+    const currentTime = new Date(); // Get the current time
 
-    if (isAfter(new Date(), sunriseTime)) {
-      return <DayComponent />;
+    if (isBefore(currentTime, sunsetTime) && isAfter(currentTime, sunriseTime)) {
+      return <DayComponent />; // It's daytime
+    } else {
+      return <NightComponent />; // It's nighttime
     }
+  }, [data, sunriseTime, sunsetTime]);
 
-    return <NightComponent />;
-  }, [data]);
+  if (sunriseTime && sunsetTime) {
+    console.log("Hora do Nascer do Sol:", format(sunriseTime, "h:mm:ss a"));
+    console.log("Hora do Pôr do Sol:", format(sunsetTime, "h:mm:ss a"));
+  } else {
+    console.log("Sunrise and sunset times are not valid.");
+  }
 
   return (
     <motion.div

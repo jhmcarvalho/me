@@ -7,6 +7,9 @@ import { useTheme } from "next-themes";
 import PinIcon from "./Icons/PinIcon";
 import mapspfp from "@images/mapspfp.png";
 
+const latitude = -24.721932;
+const longitude = -53.744984;
+
 const MapCard = ({ section }) => {
   const { resolvedTheme } = useTheme();
   const { data, isLoading } = useSWR(
@@ -16,9 +19,8 @@ const MapCard = ({ section }) => {
   const adress = "Toledo, Paraná"
   const mapUrl = useMemo(
     () =>
-      `http://maps.apple.com/?address=${encodeURIComponent(adress
-        )}&z=15`,
-    [adress]
+      `http://maps.apple.com/?q=${latitude},${longitude}&z=15`,
+      []
   );
 
   return (
@@ -27,7 +29,7 @@ const MapCard = ({ section }) => {
       target="_blank"
       rel="noreferrer"
       animate={{ opacity: ["all", "about"].includes(section) ? 1 : 0.3 }}
-      className="flex bg-white dark:bg-gray-900 rounded-3xl col-span-2 md:col-span-1 row-span-2 md:row-span-1 overflow-hidden relative shadow-sm"
+      className="flex bg-white dark:bg-gray-900 rounded-3xl col-span-2 md:col-span-1 row-span-2 md:row-span-1 overflow-hidden relative shadow-sm background-image"
       whileHover="groupHover"
       variants={{
         groupHover: {
