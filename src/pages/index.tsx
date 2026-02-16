@@ -22,13 +22,13 @@ function Home() {
       >
         <IntroCard section={section} />
         <div className="flex flex-col gap-5"><ToggleCard section={section} />
-        <WeatherCard section={section} /></div>
+          <WeatherCard section={section} /></div>
         <SpotifyCard section={section} />
         <DiscordCard section={section} />
         <OnlineCard section={section} />
         <GitHub section={section} />
         <MapCard section={section} />
-        <MailCard section={section} />
+        {/*<MailCard section={section} />*/}
         <TimeCard section={section} />
       </div>
     </div>
