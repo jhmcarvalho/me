@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { useEffect, useState } from "react";
 
 const SpotifyCard = ({ section }) => {
-  const { data } = useSWR(
+  const { data, error } = useSWR(
     "/api/nowplaying",
     (url) => axios.get(url).then((res) => res.data),
     { refreshInterval: 10000 }
@@ -12,7 +12,7 @@ const SpotifyCard = ({ section }) => {
 
   return (
     <motion.a
-      href={data?.external_urls.spotify}
+      href={data?.external_urls?.spotify || "#"}
       target="_blank"
       rel="noreferrer"
       animate={{ opacity: ["all", "about"].includes(section) ? 1 : 0.3 }}
@@ -28,15 +28,15 @@ const SpotifyCard = ({ section }) => {
         },
       }}
     >
-      <div className="flex flex-col text-gray-900 dark:text-gray-100 justify-center xl:ml-7 md:ml-5 mt-5 xl:mt-none ml-4">
-        <div className="text-[#62DBBE] dark:text-[#1E856D] xl:text-3xl  lg:text-lg text-sm font-bold">
-          Currently Listening
+      <div className="flex flex-col text-gray-900 dark:text-gray-100 justify-center xl:ml-7 md:ml-5 mt-5 xl:mt-none ml-4 z-10">
+        <div className="text-[#62DBBE] dark:text-[#1E856D] xl:text-3xl lg:text-lg text-sm font-bold">
+          {data?.isPlaying ? "Currently Listening" : "Last Played"}
         </div>
         <div className="items-center justify-center xl:text-2xl lg:text-lg text-xs font-semibold truncate w-52 md:w-40 xl:w-56">
-          {data?.name || "loading..."}
+          {data?.name || (error ? "Error loading" : "Scanning...")}
         </div>
         <div className="items-center justify-center xl:text-2xl lg:text-lg text-xs font-light">
-          {data?.artists[0].name || ""}
+          {data?.artists?.[0]?.name || ""}
         </div>
       </div>
 
@@ -57,9 +57,10 @@ const SpotifyCard = ({ section }) => {
 
       <div className="absolute bottom-0 right-0 rounded-tl-full overflow-hidden dark:brightness-75">
         <img
-          src={data?.album.images[0].url}
+          src={data?.album?.images?.[0]?.url}
           className="xl:w-36 xl:h-36 lg:w-28 lg:h-28 h-20 md:block"
-          style={{ display: data?.album.images[0].url ? "block" : "none" }}
+          style={{ display: data?.album?.images?.[0]?.url ? "block" : "none" }}
+          alt={data?.album?.name}
         />
       </div>
     </motion.a>
