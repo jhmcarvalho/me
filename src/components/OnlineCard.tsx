@@ -8,7 +8,6 @@ const OnlineCard = ({ section }) => {
     axios.get(url).then((res) => res.data)
   );
 
-  console.log(data);
   const [status, bgClass] = useMemo(() => {
     if (!data) return ["loading", "bg-gray-400"];
     switch (data?.data?.discord_status) {

@@ -1,9 +1,6 @@
 import { motion } from "framer-motion";
-import axios from "axios";
-import useSWR from "swr";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 import PinIcon from "./Icons/PinIcon";
 import mapspfp from "@images/mapspfp.png";
 
@@ -11,16 +8,10 @@ const latitude = -24.721932;
 const longitude = -53.744984;
 
 const MapCard = ({ section }) => {
-  const { resolvedTheme } = useTheme();
-  const { data, isLoading } = useSWR(
-    `/api/map${resolvedTheme == "dark" ? "?dark" : ""}`,
-    (url) => axios.get(url).then((res) => res.data)
-  );
-  const adress = "Toledo, Paraná"
   const mapUrl = useMemo(
     () =>
       `http://maps.apple.com/?q=${latitude},${longitude}&z=15`,
-      []
+    []
   );
 
   return (
@@ -41,20 +32,6 @@ const MapCard = ({ section }) => {
         },
       }}
     >
-      <div className="flex justify-center items-center md:scale-150 2xl:scale-200 ">
-        {data && (
-          <Image
-            alt=""
-            className="saturate-150"
-            src={data.url}
-            placeholder="blur"
-            objectFit="cover"
-            blurDataURL={data.blurDataURL}
-            width={2000}
-            height={2000}
-          />
-        )}
-      </div>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className=" bg-white/10 backdrop-blur-lg backdrop-saturate-150 backdrop-filter rounded-full p-4 border-4">
           <motion.div
@@ -77,7 +54,7 @@ const MapCard = ({ section }) => {
       </div>
       <div className="absolute bottom-0 right-0 flex w-auto h-auto rounded-tl-2xl text-xs md:text-sm xl:text-base dark:bg-white/20 bg-white/40 backdrop-blur-xl backdrop-saturate-150">
         <div className="flex font-bold items-center justify-between space-x-1 px-2 py-1 pl-2 transition text-gray-500 dark:text-white">
-          <div>{data?.location}</div>
+          <div>Toledo, Paraná</div>
           <PinIcon className="w-4 h-4 md:w-6 md:h-6 " />
         </div>
       </div>

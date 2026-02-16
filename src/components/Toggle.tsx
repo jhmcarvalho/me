@@ -12,8 +12,8 @@ function classNames(...classes: unknown[]) {
 }
 
 export default function Toggle() {
-  const [enabled, setEnabled] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const [enabled, setEnabled] = useState(resolvedTheme === "light");
 
   const spring = {
     type: "spring",
@@ -26,8 +26,8 @@ export default function Toggle() {
   }, [resolvedTheme, setTheme]);
 
   useEffect(() => {
-    setTheme("dark");
-  }, [setTheme]);
+    setEnabled(resolvedTheme === "light");
+  }, [resolvedTheme]);
 
   return (
     <Switch
@@ -56,7 +56,7 @@ export default function Toggle() {
               <motion.div
                 animate={
                   enabled
-                    ? { scale: 1, rotate: 0, opacity: 1 } : { scale: 0.1, rotate: 360, opacity: 0 }    
+                    ? { scale: 1, rotate: 0, opacity: 1 } : { scale: 0.1, rotate: 360, opacity: 0 }
                 }
                 transition={{ duration: 0.4, ease: "easeInOut" }}
               >

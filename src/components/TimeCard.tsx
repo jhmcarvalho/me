@@ -2,7 +2,7 @@ import axios from "axios";
 import { useMemo } from "react";
 import useSWR from "swr";
 import { motion } from "framer-motion";
-import { isBefore, isAfter, parse, format, sub, isValid } from "date-fns";
+import { isBefore, isAfter, parse, sub, isValid } from "date-fns";
 
 import NightComponent from "./time-components/NightComponent";
 import DayComponent from "./time-components/DayComponent";
@@ -46,13 +46,6 @@ const TimeCard = ({ section }) => {
       return <NightComponent />; // It's nighttime
     }
   }, [data, sunriseTime, sunsetTime]);
-
-  if (sunriseTime && sunsetTime) {
-    console.log("Hora do Nascer do Sol:", format(sunriseTime, "h:mm:ss a"));
-    console.log("Hora do Pôr do Sol:", format(sunsetTime, "h:mm:ss a"));
-  } else {
-    console.log("Sunrise and sunset times are not valid.");
-  }
 
   return (
     <motion.div
