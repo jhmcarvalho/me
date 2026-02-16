@@ -13,10 +13,10 @@ html.dark {
 }
 
 ::-webkit-scrollbar {
-    display: none;
-  }
+  display: none;
+}
 
-.custom-container{
+.custom-container {
   max-width: 1200px;
 }
 
@@ -42,27 +42,7 @@ html.dark {
   background-image: url('/images/cloud.png');
   background-size: cover;
   background-position: center;
-  color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  width: 300px;
-  height: 200px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Arial', sans-serif;
-  background-color: rgba(255, 255, 255, 0.5); /* Ajuste a transparência aqui (0.5 neste exemplo) */
-}
-
-.font-23{
-  font-size: 23px;
-}
-
-.font-18{
-  font-size: 18px;
-}
-
-.font-85{
-  font-size: 85px;
+  transition: all 0.3s ease;
 }

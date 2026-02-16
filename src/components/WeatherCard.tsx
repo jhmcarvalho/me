@@ -1,38 +1,18 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useMemo } from "react";
 import useSWR from "swr";
 import { motion } from "framer-motion";
 
 const WeatherCard = ({ section }) => {
   const latitude = -24.7199;
   const longitude = -53.7433;
-  const apiKey = "265899120e6bcf38fbc50a861d00bf33"; // Substitua pelo seu próprio API Key
+  const apiKey = "265899120e6bcf38fbc50a861d00bf33";
+  const weatherAPIUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric&lang=pt_br`;
 
-  const weatherAPIUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&lang=pt_br`; // Defina lang=pt_br para obter resultados em português
+  const { data: weatherData } = useSWR(weatherAPIUrl, (url) =>
+    axios.get(url).then((res) => res.data)
+  );
 
-  const [weatherData, setWeatherData] = useState(null);
-
-  useEffect(() => {
-    axios.get(weatherAPIUrl).then((response) => {
-      setWeatherData(response.data);
-    });
-  }, [weatherAPIUrl]);
-
-  const temperature = useMemo(() => {
-    if (!weatherData) return null;
-
-    const temperatureKelvin = weatherData.main.temp;
-    const temperatureCelsius = temperatureKelvin - 273.15;
-
-    return temperatureCelsius.toFixed(0);
-  }, [weatherData]);
-
-  const weatherDescription = useMemo(() => {
-    if (!weatherData) return null;
-
-    return weatherData.weather[0].description;
-  }, [weatherData]);
+  const temperature = weatherData ? Math.round(weatherData.main.temp) : null;
 
   return (
     <motion.div
@@ -49,27 +29,27 @@ const WeatherCard = ({ section }) => {
       animate={{
         opacity: section && ["all", "about"].includes(section) ? 1 : 0.3,
       }}
-      className={`text-white rounded-lg p-4 mx-4 my-4 dark:bg-gray-900 hover:bg-blue-900 transition-colors cursor-pointer weather-card`}
+      className="bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm relative weather-card flex-1 min-h-[150px]"
     >
-      <div>
-        <h2 className="text-2xl font-bold font-23">Clima atual - Toledo/PR</h2>
-        {temperature && (
-          <p className="text-xl mt-2 font-semibold">
-            <span className="font-23">Temperatura:</span>
-            <br></br>
-            <br></br>
-            <span className="font-85 ml-2">{temperature}°C</span>
-          </p>
-        )}
-        {weatherDescription && (
-          <p className="text-xl mt-2 font-semibold">
-            <span className="font-23">Clima:</span>
-            <span className="font-23 ml-2">{weatherDescription}</span>
-          </p>
-        )}
+      <div className="absolute inset-0 bg-black/5 dark:bg-white/5 pointer-events-none" />
+      <div className="relative z-10 p-6 flex flex-col justify-between h-full">
+        <div>
+          <h2 className="text-gray-500 dark:text-gray-400 text-xs font-bold uppercase tracking-wider">
+            Toledo, PR
+          </h2>
+          <div className="flex items-baseline gap-1 mt-1">
+            <span className="text-gray-900 dark:text-gray-100 text-4xl font-bold">
+              {temperature !== null ? `${temperature}°` : "--"}
+            </span>
+          </div>
+        </div>
+        <div className="text-[10px] text-gray-400 dark:text-gray-500 font-medium">
+          OpenWeatherMap
+        </div>
       </div>
     </motion.div>
   );
 };
+
 
 export default WeatherCard;
