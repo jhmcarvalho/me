@@ -4,6 +4,14 @@ import Transparentpfp from "@images/dino.png";
 import Links from "./Social";
 
 const IntroCard = ({ section }) => {
+  const calculateAge = (birthday) => {
+    const ageDifMs = Date.now() - new Date(birthday).getTime();
+    const ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  };
+
+  const age = calculateAge("1998-02-12");
+
   return (
     <motion.div
       className="col-span-3 md:col-span-2 bg-white dark:bg-gray-900
@@ -49,7 +57,7 @@ const IntroCard = ({ section }) => {
         <div className="flex flex-col ml-5 justify-center 2xl:mt-10 sm:-mt-6 sm:ml-8 md:ml-6">
           <div className="lg:text-xl xl:text-2xl 2xl:mr-20 font-nunito dark:text-gray-300">
             {" "}
-            I&apos;m a 28 year-old developement student. I currently work with software
+            I&apos;m a {age}-year-old development student. I currently work with software
             analysis and testing.
             <a title="Instagram"
               className="ml-1 underline-offset-2 underline focus:outline-none"
