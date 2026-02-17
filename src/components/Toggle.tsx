@@ -13,7 +13,7 @@ function classNames(...classes: unknown[]) {
 
 export default function Toggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  const [enabled, setEnabled] = useState(resolvedTheme === "light");
+  const [enabled, setEnabled] = useState(true);
 
   const spring = {
     type: "spring",
