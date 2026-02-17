@@ -8,6 +8,8 @@ interface ProjectProps {
   projectUrl: string;
   githubUrl?: string;
   isGithubPrivate?: boolean;
+  isSiteOff?: boolean;
+  technologies?: string[];
 }
 
 const ProjectCard = ({ project }: { project: ProjectProps }) => {
@@ -21,26 +23,29 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
       <div className="flex flex-col md:flex-row gap-5 p-5">
         {/* Preview */}
         <a
-          href={project.projectUrl}
-          target="_blank"
+          href={project.isSiteOff ? undefined : project.projectUrl}
+          target={project.isSiteOff ? undefined : "_blank"}
           rel="noreferrer"
-          className="group flex-shrink-0 md:w-[340px] w-full"
+          className={`group flex-shrink-0 md:w-[340px] w-full ${project.isSiteOff ? "cursor-not-allowed" : ""}`}
+          onClick={project.isSiteOff ? (e) => e.preventDefault() : undefined}
         >
-          <div className="rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 aspect-video bg-gray-100 dark:bg-gray-800 relative">
+          <div className={`rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 aspect-video bg-gray-100 dark:bg-gray-800 relative ${project.isSiteOff ? "opacity-50 grayscale" : ""}`}>
             {project.previewImage ? (
               <img
                 src={project.previewImage}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                className={`w-full h-full object-cover transition-transform duration-300 ${project.isSiteOff ? "" : "group-hover:scale-105"}`}
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500 font-bold text-sm uppercase tracking-wider">
                 Preview do sistema
               </div>
             )}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-              <ExternalLinkIcon className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg" />
-            </div>
+            {!project.isSiteOff && (
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                <ExternalLinkIcon className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg" />
+              </div>
+            )}
           </div>
         </a>
 
@@ -53,8 +58,22 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
             {project.description}
           </p>
 
+          {/* Technologies */}
+          {project.technologies && project.technologies.length > 0 && (
+            <div className="flex flex-wrap justify-center gap-1.5 mt-4">
+              {project.technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2.5 py-0.5 rounded-full text-[12px] font-medium bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          )}
+
           {/* Links */}
-          <div className="flex flex-wrap justify-center gap-3 mt-5">
+          <div className="flex flex-wrap justify-center gap-3 mt-4">
             {project.githubUrl && (
               <a
                 href={project.isGithubPrivate ? undefined : project.githubUrl}
@@ -78,10 +97,16 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
               </a>
             )}
             <a
-              href={project.projectUrl}
-              target="_blank"
+              href={project.isSiteOff ? undefined : project.projectUrl}
+              target={project.isSiteOff ? undefined : "_blank"}
               rel="noreferrer"
-              className="group/btn inline-flex items-center gap-2.5 px-5 py-2.5 rounded-2xl text-xs font-semibold bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className={`group/btn inline-flex items-center gap-2.5 px-5 py-2.5 rounded-2xl text-xs font-semibold transition-all duration-300
+                ${project.isSiteOff
+                  ? "bg-blue-50 dark:bg-blue-900/10 text-blue-300 dark:text-blue-800 cursor-not-allowed"
+                  : "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white hover:shadow-lg hover:scale-105"
+                }`}
+              onClick={project.isSiteOff ? (e) => e.preventDefault() : undefined}
+              title={project.isSiteOff ? "Site fora do ar" : "Visitar projeto"}
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" />
@@ -89,6 +114,9 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
                 <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
               </svg>
               Project URL
+              {project.isSiteOff && (
+                <span className="text-[10px] opacity-50 ml-0.5">(offline)</span>
+              )}
             </a>
           </div>
         </div>

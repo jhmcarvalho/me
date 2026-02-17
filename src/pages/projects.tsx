@@ -15,8 +15,10 @@ const projects = [
       "Aplicação para criar bilhetes de amor personalizados em poucos passos, com pré-visualização em tempo real e compartilhamento fácil.",
     previewImage: "/images/projects/lovebilhete.png",
     projectUrl: "https://lovebilhete.vercel.app",
-    githubUrl: "https://github.com/jhmcarvalho/lovebilhete",
-    isGithubPrivate: false,
+    githubUrl: "https://github.com/jhmcarvalho/amor-digital-bilhete",
+    isGithubPrivate: true,
+    isSiteOff: true,
+    technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Supabase", "shadcn/ui"],
   },
   {
     title: "Controle de Contas",
@@ -24,8 +26,10 @@ const projects = [
       "Sistema de controle financeiro pessoal com autenticação de usuários, permitindo gerenciar receitas e despesas de forma organizada.",
     previewImage: "/images/projects/contas.png",
     projectUrl: "https://contas-jeff.vercel.app",
-    githubUrl: "https://github.com/jhmcarvalho/contas",
-    isGithubPrivate: false,
+    githubUrl: "https://github.com/jhmcarvalho/controle_despesas",
+    isGithubPrivate: true,
+    isSiteOff: true,
+    technologies: ["React", "JavaScript", "Vite", "Supabase", "Recharts"],
   },
   {
     title: "CrytCot — Cotações de Moedas",
@@ -34,7 +38,9 @@ const projects = [
     previewImage: "/images/projects/cotacao.png",
     projectUrl: "https://cotacao-jeff.vercel.app",
     githubUrl: "https://github.com/jhmcarvalho/cotacao",
-    isGithubPrivate: false,
+    isGithubPrivate: true,
+    isSiteOff: false,
+    technologies: ["Next.js", "React", "JavaScript", "Supabase"],
   },
   {
     title: "Cha de Casa Nova",
@@ -43,7 +49,9 @@ const projects = [
     previewImage: "/images/projects/chadecasanova.png",
     projectUrl: "https://casanovajeferson.vercel.app",
     githubUrl: "https://github.com/jhmcarvalho/cha-de-casa-nova",
-    isGithubPrivate: true,
+    isGithubPrivate: false,
+    isSiteOff: true,
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase"],
   },
 ];
 
