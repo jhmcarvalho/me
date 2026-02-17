@@ -17,7 +17,7 @@ const projects = [
     projectUrl: "https://lovebilhete.vercel.app",
     githubUrl: "https://github.com/jhmcarvalho/amor-digital-bilhete",
     isGithubPrivate: true,
-    isSiteOff: true,
+    isSiteOff: false,
     technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Supabase", "shadcn/ui"],
   },
   {
