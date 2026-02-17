@@ -24,10 +24,10 @@ function Home() {
         <div className="flex flex-col gap-5"><ToggleCard section={section} />
           <WeatherCard section={section} /></div>
         <SpotifyCard section={section} />
-        <DiscordCard section={section} />
+        <MapCard section={section} />
         <OnlineCard section={section} />
         <GitHub section={section} />
-        <MapCard section={section} />
+        <DiscordCard section={section} />
         {/*<MailCard section={section} />*/}
         <TimeCard section={section} />
       </div>
