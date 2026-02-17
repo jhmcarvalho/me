@@ -45,7 +45,7 @@ const ThemeContent = ({ Component, pageProps }) => {
 
 const App = ({ Component, pageProps }) => {
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" defaultTheme="light">
       <Head>
         <title>Jeff</title>
       </Head>
