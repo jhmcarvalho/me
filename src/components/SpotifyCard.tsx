@@ -15,7 +15,7 @@ const SpotifyCard = ({ section }) => {
       href={data?.external_urls?.spotify || "#"}
       target="_blank"
       rel="noreferrer"
-      animate={{ opacity: ["all", "about"].includes(section) ? 1 : 0.3 }}
+      animate={{ opacity: ["all"].includes(section) ? 1 : 0.3 }}
       className="flex bg-white relative dark:bg-gray-900 rounded-3xl md:col-span-1 col-span-2 overflow-hidden"
       whileHover="groupHover"
       variants={{
