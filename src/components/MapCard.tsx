@@ -32,7 +32,7 @@ const MapCard = ({ section }) => {
         },
       }}
     >
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center z-10">
         <div className=" bg-white/10 backdrop-blur-lg backdrop-saturate-150 backdrop-filter rounded-full p-4 border-4">
           <motion.div
             variants={{
@@ -52,7 +52,7 @@ const MapCard = ({ section }) => {
           </motion.div>
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 flex w-auto h-auto rounded-tl-2xl text-xs md:text-sm xl:text-base dark:bg-white/20 bg-white/40 backdrop-blur-xl backdrop-saturate-150">
+      <div className="absolute bottom-0 right-0 flex w-auto h-auto rounded-tl-2xl text-xs md:text-sm xl:text-base dark:bg-white/20 bg-white/40 backdrop-blur-xl backdrop-saturate-150 z-10">
         <div className="flex font-bold items-center justify-between space-x-1 px-2 py-1 pl-2 transition text-gray-500 dark:text-white">
           <div>Toledo, Paraná</div>
           <PinIcon className="w-4 h-4 md:w-6 md:h-6 " />

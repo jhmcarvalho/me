@@ -33,9 +33,23 @@ html.dark {
 }
 
 .background-image {
+  position: relative;
+}
+
+.background-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background-image: url("/images/maps.png");
   background-size: cover;
   background-position: center;
+  z-index: 0;
+  border-radius: inherit;
+  transition: filter 0.5s ease-in-out;
+}
+
+.dark .background-image::before {
+  filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9);
 }
 
 .weather-card {
