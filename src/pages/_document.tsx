@@ -9,7 +9,7 @@ export default function Document() {
 				<meta name="title" content="Jeff" />
 				{/* facebook  / open graph */}
 				<meta property="og:type" content="website" />
-				<meta property="og:url" content="https://www.anahoward.me"></meta>
+				<meta property="og:url" content="https://www.jeff.me"></meta>
 				<meta property="og:title" content="Jeff" />
 				<meta property="og:description" content="" />
 
