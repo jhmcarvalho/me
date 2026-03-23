@@ -29,7 +29,7 @@ const WeatherCard = ({ section }) => {
       animate={{
         opacity: section && ["all", "about"].includes(section) ? 1 : 0.3,
       }}
-      className="bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm relative custom-card weather-card"
+      className="bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm relative flex-1 weather-card"
     >
       <div className="absolute inset-0 bg-black/5 dark:bg-white/5 pointer-events-none" />
       <div className="relative z-10 p-6 flex flex-col justify-between h-full">

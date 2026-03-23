@@ -27,7 +27,7 @@ const BitcoinCard = ({ section }: { section?: string }) => {
                     transition: { duration: 0.1, ease: "easeInOut" },
                 },
             }}
-            className="bg-white dark:bg-gray-900 rounded-3xl custom-card shadow-sm overflow-hidden"
+            className="bg-white dark:bg-gray-900 rounded-3xl flex-1 shadow-sm overflow-hidden"
         >
             <div className="flex items-center justify-between h-full px-6 py-4">
                 <div className="flex items-center gap-3">

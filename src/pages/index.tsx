@@ -18,11 +18,10 @@ function Home() {
     <div className="flex flex-col m-5 font-nunito">
       <NavBar setSection={setSection} />
       <div
-        className="grid grid-cols-3 gap-2 md:grid-cols-3 
-			md:gap-3 mt-5 custom-container mx-auto xl:px-20 transparent"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-3 mt-5 custom-container mx-auto xl:px-20 transparent"
       >
         <IntroCard section={section} />
-        <div className="flex flex-col gap-5"><ToggleCard section={section} />
+        <div className="flex flex-col gap-2 md:gap-3 h-full"><ToggleCard section={section} />
           <BitcoinCard section={section} />
           <WeatherCard section={section} /></div>
         <SpotifyCard section={section} />
