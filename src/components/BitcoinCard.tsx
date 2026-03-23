@@ -52,7 +52,7 @@ const BitcoinCard = ({ section }: { section?: string }) => {
                         Bitcoin
                     </span>
                     <span className="text-[10px] text-[#F7931A]/60 font-medium">
-                        BTC / USDT · Binance
+                        BTC / USDT - CoinGecko
                     </span>
                 </div>
 
@@ -64,9 +64,6 @@ const BitcoinCard = ({ section }: { section?: string }) => {
                     ) : (
                         <div className="h-7 w-28 bg-[#F7931A]/10 rounded-lg animate-pulse" />
                     )}
-                    <p className="text-[10px] text-gray-400 dark:text-gray-500 font-medium mt-0.5">
-                        Live price
-                    </p>
                 </div>
             </div>
         </motion.div>
