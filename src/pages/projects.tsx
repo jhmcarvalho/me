@@ -21,6 +21,17 @@ const projects = [
     technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "Supabase", "shadcn/ui"],
   },
   {
+    title: "Escritór.io",
+    description:
+      "Escritório virtual no estilo RPG 2D. Desenhado para equipes remotas. Interação com vídeo-chamadas, compartilhamento de tela, e chat de texto. O objetivo é simular as interações de um escritório físico.",
+    previewImage: "/images/projects/semimagem.png",
+    projectUrl: "game-3xiq.onrender.com",
+    githubUrl: "https://github.com/jhmcarvalho/game",
+    isGithubPrivate: true,
+    isSiteOff: true,
+    technologies: ["JavaScript", "Express", "Socket.io", "Prisma", "WebRTC API"],
+  },
+  {
     title: "Controle de Contas",
     description:
       "Sistema de controle financeiro pessoal com autenticação de usuários, permitindo gerenciar receitas e despesas de forma organizada.",
