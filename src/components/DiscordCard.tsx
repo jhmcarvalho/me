@@ -1,15 +1,20 @@
 import { motion } from 'framer-motion'
 import { ArrowCircleUpIcon } from '@heroicons/react/outline'
-import Image from 'next/image'
-
-
+import useSWR from 'swr'
 
 const DiscordCard = ({ section }) => {
+	const { data } = useSWR('/api/online', (url) => fetch(url).then((res) => res.json()), {
+		revalidateOnFocus: true,
+	})
+	const discordUserId = data?.data?.discord_user?.id
+	const discordProfileUrl = discordUserId ? `https://discord.com/users/${discordUserId}` : 'https://discord.com/app'
+
 	return (
 		<motion.a
-			href="https://discord.gg/ehpwPAhxaN"
+			href={discordProfileUrl}
 			target="_blank"
 			rel="noreferrer"
+			aria-disabled={!discordUserId}
 			animate={{ opacity: ['all', 'contact'].includes(section) ? 1 : 0.3 }}
 			whileHover="groupHover"
 			variants={{
