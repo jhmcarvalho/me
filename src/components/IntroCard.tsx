@@ -57,7 +57,7 @@ const IntroCard = ({ section }) => {
         <div className="flex flex-col ml-5 justify-center 2xl:mt-10 sm:-mt-6 sm:ml-8 md:ml-6">
           <div className="lg:text-xl xl:text-2xl 2xl:mr-20 font-nunito dark:text-gray-300">
             {" "}
-            I&apos;m a {age}-year-old.Technology professional passionate about continuous learning and innovation.
+            I&apos;m a {age}-year-old. Technology professional passionate about continuous learning and innovation.
              Currently working in software development as a Product Owner, 
              leading the Analysis, Testing, and Development teams.
             <a title="Instagram"
