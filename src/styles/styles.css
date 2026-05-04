@@ -53,10 +53,21 @@ html.dark {
 }
 
 .weather-card {
-  background-image: url('/images/cloud.png');
-  background-size: cover;
-  background-position: center;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+  position: relative;
+}
+
+.weather-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/cloud.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  /* 👈 ajuste aqui */
+  z-index: 0;
+  border-radius: inherit;
 }

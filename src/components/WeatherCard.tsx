@@ -32,9 +32,9 @@ const WeatherCard = ({ section }) => {
       className="bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm relative flex-1 weather-card"
     >
       <div className="absolute inset-0 bg-black/5 dark:bg-white/5 pointer-events-none" />
-      <div className="relative z-10 p-6 flex flex-col justify-between h-full">
+      <div className="relative z-10 p-6 flex flex-col justify-between h-full opacity-100">
         <div>
-          <h2 className="text-gray-500 dark:text-gray-400 text-xs font-bold uppercase tracking-wider">
+          <h2 className="text-gray-500 dark:text-gray-400 text-xs font-bold uppercase tracking-wider ">
             Toledo, PR
           </h2>
           <div className="flex items-baseline gap-1 mt-1">
@@ -42,9 +42,10 @@ const WeatherCard = ({ section }) => {
               {temperature !== null ? `${temperature}°` : "--"}
             </span>
           </div>
-        </div>
-        <div className="text-[10px] text-gray-400 dark:text-gray-500 font-medium">
-          OpenWeatherMap
+          {weatherData?.weather?.[0]?.icon && (
+            <img
+            />
+          )}
         </div>
       </div>
     </motion.div>
