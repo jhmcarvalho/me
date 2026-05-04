@@ -21,7 +21,7 @@ const BitcoinCard = ({ section }: { section?: string }) => {
     return (
         <motion.div
             animate={{
-                opacity: section && ["all", "about"].includes(section) ? 1 : 0.3,
+                opacity: section && ["all"].includes(section) ? 1 : 0.3,
             }}
             whileHover="groupHover"
             variants={{
